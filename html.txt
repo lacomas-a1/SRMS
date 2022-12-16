@@ -1,0 +1,15 @@
+<div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <!-- table to display here -->
+        </div>
+      </div>
+ 
+ 
+ @media (max-width:768px) {
+    .nav-tabs > li {
+        display:block;
+        float:none;
+    }
+}

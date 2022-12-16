@@ -1,0 +1,686 @@
+<?php 
+include('dbcon.php');
+include('session.php'); 
+
+$result=mysqli_query($con, "select * from users where user_id='$session_id'")or die('Error In Session');
+$row=mysqli_fetch_array($result);
+
+ ?>
+<!-- <html> //lang="en" -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <script src="https://kit.fontawesome.com/f41fd42c11.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <section class="sub-head">
+    <nav>
+       <a href=" "><img src="images/badge2.png"></a>
+       <h1>RESULT MANAGEMENT SYSTEM</h1>
+       <div class="logout">
+        <a href="#" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i>LogOut</a>
+       </div>
+     </nav>
+  </section>
+
+          <div class="Container">
+          <div class="tab">
+            <button class="tablinks" onclick="openPage(event,'Dasboard')" id="defaultOpen"><i class="fa-solid fa-gauge"></i> Dashboard</button>
+            <!-- <button class="tablinks" onclick="openPage(event,'StudentClasses')"><i class="fa-solid fa-landmark"></i> Class Management</button>
+            <button class="tablinks" onclick="openPage(event,'Subject')"><i class="fa-solid fa-chart-pie"></i> Subject Management</button>
+            <button class="tablinks" onclick="openPage(event,'Student')"><i class="fa-solid fa-users"></i> Student Management</button>
+            <button class="tablinks" onclick="openPage(event,'teacher')"><i class="fa-solid fa-chalkboard-user"></i> Teacher Management</button> -->
+            <button class="tablinks" onclick="openPage(event,'Exams')"><i class="fa-solid fa-file"></i> Exams Management</button>
+            <button class="tablinks" onclick="openPage(event,'Results')"><i class="fa-sharp fa-solid fa-marker"></i> Results Management</button>
+            <!-- <button class="tablinks" onclick="openPage(event,'GradingSystem')"><i class="fa-solid fa-arrow-up-a-z"></i> Grading System</button> -->
+            <button class="tablinks" onclick="openPage(event,'Settings')"><i class="fa-solid fa-gears"></i> Settings</button>
+            <button class="tablinks" onclick="openPage(event,'Settings')"><img src="images/favicon-24x24.png" alt=""> Settings</button>
+          </div>
+
+        <!---------------------------- DASHBOARD-------------------------------------->
+
+        <div id="Dasboard" class="tabcontent">
+          <div class="card-container">
+
+            <div class="cards">
+              <div class="card-color1">
+                <!-- <span><i class="fa-solid fa-school fa-4x"></i></span> -->
+                <span><i class="fa-solid fa-landmark fa-4x"></i></span>
+                <div class="icon">
+                  <div class="total">
+                    <h1>0</h1>
+                  </div>
+                  <div class="title">
+                    <p>CLASSES</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cards">
+              <div class="card-color2">
+                <span><i class="fa-solid fa-chart-pie fa-4x"></i></span>
+                <div class="icon">
+                  <div class="total">
+                    <h1>0</h1>
+                  </div>
+                  <div class="title">
+                    <p>SUBJECTS</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cards">
+              <div class="card-color3">
+                <!-- <span><i class="fa-solid fa-user-group fa-4x"></i></span> -->
+                <span><i class="fa-solid fa-chalkboard-user fa-4x"></i></span>
+                <div class="icon">
+                  <div class="total">
+                    <h1>0</h1>
+                  </div>
+                  <div class="title">
+                    <p>TEACHERS</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cards">
+              <div class="card-color4">
+                <!-- <span><i class="fa-solid fa-user-group fa-4x"></i></span> -->
+                <span><i class="fa-solid fa-users fa-4x"></i></span>
+                <div class="icon">
+                  <div class="total">
+                    <h1>0</h1>
+                  </div>
+                  <div class="title">
+                    <p>STUDENTS</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+          
+        <!---------------------------- CLASSES-------------------------------->
+            
+        <!-- <div id="StudentClasses" class="tabcontent">
+          <button class="modal-open"
+            data-modal="modal1"><i class="fa-solid fa-user-plus"></i>Add Class</button>
+
+            <div class="modal" id="modal1">
+              <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="model-body">
+                  <form>
+                    <label for="classname">Class Name :</label>
+                    <input type="text" id="classname" name="ClassName" placeholder="English" required>
+                    
+                    <label for="classcode">Class Code :</label>
+                    <input type="text" id="classcode" name="ClassCode" placeholder="3030" required>
+                      
+                    <button type="submit">Submit</button>
+
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button class="link modal-close">Close</button>
+                </div>
+              </div>
+            </div>
+        </div> -->
+
+        <!---------------------------- SUBJECT-------------------------------->
+
+          <!-- <div id="Subject" class="tabcontent">
+            <button class="modal-open"
+            data-modal="modal2">Add Subject</button>
+
+            <div class="modal" id="modal2">
+              <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="model-body">
+                  <form>
+                    <label for="subjectname">Subject Name :</label>
+                    <input type="text" id="subjectname" name="subjectName" placeholder="English" required>
+
+                    <label for="subjectcode">Subject Code :</label>
+                    <input type="text" id="subjectcode" name="subjectCode" placeholder="3030" required>
+
+                    <label for="classnames">Class Name :</label>
+                      <select name="ClassName"  id="classname" class="selection" required>
+                        <option value=" ">--Select Class--</option>
+                        <option value="Male">Grade-1</option>
+                        <option value="Female">Grade-2</option>
+                      </select>
+                      
+                    <button type="submit">Submit</button>
+
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button class="link modal-close">Close</button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!---------------------------- STUDENT-------------------------------->
+<!-- 
+          <div id="Student" class="tabcontent">
+            <button class="modal-open"
+            data-modal="modal3">Add Student</button>
+
+            <div class="modal" id="modal3">
+              <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="model-body">
+                  <form>
+                    <div class="container">
+                      <div class="row">
+                        <div class="details">
+                            <label for="admission">Admission No:</label>
+                            <input type="text" id="admission" name="AdmissionNo" placeholder="IC211-0743/3030" required>
+                            <label for="fname">Full Name:</label>
+                            <input type="text" id="fname" name="firstname" placeholder="john Doe" required>
+                            <label for="gender">Gender :</label>
+                              <select name="gender"  id="gender" required>
+                                <option value=" ">--Select Gender--</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                              </select>
+                          </div>
+                      </div>
+
+                      <div class="row1">
+                          <div class="details">
+                            <label for="rollno">Roll No:</label>
+                            <input type="text" id="rollno" name="RollNo" placeholder="3030" required>
+                            <label for="classnames">Class Name :</label>
+                              <select name="ClassName"  id="classname" class="selection" required>
+                                <option value=" ">--Select Class--</option>
+                                <option value="Male">Grade-1</option>
+                                <option value="Female">Grade-2</option>
+                              </select>
+                            <label for="birthdate">Date of Birth :</label><br>
+                            <input type="date" id="birthdate" name="D.O.B" placeholder="25-12-2000" required>
+                          </div>
+                        </div>
+                      </div>
+                      <button type="submit" class="submit">Submit</button>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="link modal-close">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-------------------------- TEACHERS-------------------------------->
+
+          <!-- <div id="teacher" class="tabcontent">
+            <button class="modal-open"
+            data-modal="modal4">Add Teacher</button>
+
+            <div class="modal" id="modal4">
+              <div class="modal-content">
+                <div class="model-body">
+                  <form>
+                    <div class="container">
+                      <div class="row">
+                        <div class="details">
+                            <label for="admission">ID No:</label>
+                            <input type="text" id="admission" name="AdmissionNo" placeholder="74352736" required>
+                            <label for="teacherno">Teachers No:</label>
+                            <input type="text" id="teacherno" name="TeacherNo" placeholder="IC211-0743/3030" required>
+                            <label for="fname">Full Name:</label>
+                            <input type="text" id="fname" name="firstname" placeholder="john Doe" required>
+                            <label for="gender">Gender :</label>
+                              <select name="gender"  id="gender" required>
+                                <option value=" ">--Select Gender--</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                              </select>
+                            <label for="classnames">Class Name :</label>
+                              <select name="ClassName"  id="classname" class="selection" required>
+                                <option value=" ">--Select Class--</option>
+                                <option value="Male">Grade-1</option>
+                                <option value="Female">Grade-2</option>
+                              </select>
+                          </div>
+                      </div>
+
+                      <div class="row1">
+                          <div class="details">
+                            <label for="no">Phone No:</label>
+                            <input type="text" id="no" name="firstname" placeholder="0767984758" required>
+                            <label for="email">Email :</label>
+                            <input type="text" id="email" name="ClassName" placeholder="user@gmail.com" required>
+                            <label for="fname">Address:</label>
+                            <input type="text" id="fname" name="firstname" placeholder="john Doe" required>
+                            <label for="subjectname">Subject Name :</label>
+                              <select name="subjectName"  id="subject" class="selection" required>
+                                <option value=" ">--Select Subject--</option>
+                                <option value="Male">English</option>
+                                <option value="Female">Maths</option>
+                              </select>
+                            <label for="birthdate">Date of Birth :</label><br>
+                            <input type="date" id="birthdate" name="D.O.B" placeholder="25-12-2000" required>
+                          </div>
+                        </div>
+                      </div>
+                      <button type="submit" class="submit">Submit</button>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="link modal-close">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!---------------------------- EXAMS -------------------------------->
+
+          <div id="Exams" class="tabcontent">
+            <button class="modal-open"
+            data-modal="modal5">Add Exam</button>
+
+            <div class="modal" id="modal5">
+              <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="model-body">
+                  <form>
+                    <label for="examname">Exam Name :</label>
+                    <input type="text" placeholder="Term Two Exam" name="examname" required>
+              
+                    <label for="examcode">Exam Code :</label>
+                    <input type="text" placeholder="Term20/2020" name="examcode" required>
+                      
+                    <button type="submit">Submit</button>
+
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button class="link modal-close">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!---------------------------- RESULTS -------------------------------->
+
+          <div id="Results" class="tabcontent">
+            <!-- <button class="modal-open"
+            data-modal="modal6">Add Results</button> -->
+
+            <!-- <div class="modal" id="modal6">
+              <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="model-body">
+                  <form>
+                    <label for="classnames">Class Name :</label>
+                      <select name="ClassName"  id="classname" class="selection" required>
+                        <option value=" ">--Select Class--</option>
+                        <option value="Male">Grade-1</option>
+                        <option value="Female">Grade-2</option>
+                      </select>
+                    <label for="selectexams">Select Exams :</label>
+                      <select name="selectExams"  id="selectexams" class="selection" required>
+                        <option value=" ">--Select Class--</option>
+                        <option value="Male">EndTerm 2</option>
+                        <option value="Female">EndTerm 1</option>
+                      </select>
+                    
+                    <label for="studentrollno">Student Roll No :</label>
+                    <input type="text" id="studentrollno" name="studentRollNo" placeholder="435AD" required>
+                    <label for="totalScores">Total Score :</label>
+                    <input type="text" id="totalScores" name="totalScore" placeholder="500" required>
+                      
+                    <button type="submit">Submit</button>
+
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button class="link modal-close">Close</button>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- ------------Individual Results-------------------- -->
+
+            <button class="modal-open"
+            data-modal="modal7">Individual Results</button>
+
+            <div class="modal" id="modal7">
+              <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="model-body">
+                  <form>
+                    <label for="rollno">Student Roll No :</label>
+                    <input type="text" id="rollno" name="RollNumber" placeholder="435AD" required>
+                    <label for="subject">Subject Name :</label>
+                    <select name="subjectName"  id="subject" class="selection" required>
+                      <option value=" ">--Select Subject--</option>
+                      <option value="Male">English</option>
+                      <option value="Female">Maths</option>
+                    </select>
+                    <label for="classname">Class Name :</label>
+                      <select name="ClassName"  id="classname" class="selection" required>
+                        <option value=" ">--Select Class--</option>
+                        <option value="Male">Grade-1</option>
+                        <option value="Female">Grade-2</option>
+                      </select>
+                    <label for="total">Total Score :</label>
+                    <input type="text" id="total" name="TotalScore" placeholder="500" required>
+                      
+                    <button type="submit">Submit</button>
+
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button class="link modal-close">Close</button>
+                </div>
+              </div>
+            </div>
+
+            <!--------------------- PRINTING RESULTS------------------------------- -->
+
+            <button class="modal-open"
+            data-modal="modal11">Printing Results</button>
+
+            <div class="modal" id="modal11">
+              <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="model-body">
+                  <!------------- PRINTING CLASS RESULTS--------------->
+                  <button class="modal-open"
+                  data-modal="modal12">Class Results</button>
+
+                  <div class="modal" id="modal12">
+                    <div class="modal-content">
+                      <div class="modal-header"></div>
+                      <div class="model-body">
+                        <form>
+                          <label for="classname">Class Name :</label>
+                            <select name="ClassName"  id="classname" class="selection" required>
+                              <option value=" ">--Select Class--</option>
+                              <option value="Male">Grade-1</option>
+                              <option value="Female">Grade-2</option>
+                            </select>
+                          <label for="selectexams">Select Exams :</label>
+                            <select name="selectExams"  id="selectexams" class="selection" required>
+                              <option value=" ">--Select Class--</option>
+                              <option value="Male">EndTerm 2</option>
+                              <option value="Female">EndTerm 1</option>
+                            </select>
+
+                          <div class="print-btn">
+                            <button type="submit"><i class="fa-solid fa-print fa-1x"></i>PRINT</button>
+                          </div>
+
+                          <div class="download-btn">
+                            <button type="submit"><i class="fa-solid fa-cloud-arrow-down fa-1x"></i>DOWNLOAD</button>
+                          </div>
+
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="link modal-close">Close</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!----------- PRINTING INDIVIDUAL RESULTS---------- -->
+                  <button class="modal-open"
+                  data-modal="modal13">Individual Results</button>
+
+                  <div class="modal" id="modal13">
+                    <div class="modal-content">
+                      <div class="modal-header"></div>
+                      <div class="model-body">
+                        <form>
+                          <label for="rollno">Student Roll No :</label>
+                          <input type="text" id="rollno" name="RollNumber" placeholder="435AD" required>
+                          <label for="selectexams">Select Exams :</label>
+                            <select name="selectExams"  id="selectexams" class="selection" required>
+                              <option value=" ">--Select Class--</option>
+                              <option value="Male">EndTerm 2</option>
+                              <option value="Female">EndTerm 1</option>
+                            </select>
+
+                            <div class="print-btn">
+                              <button type="submit"><i class="fa-solid fa-print fa-1x"></i>PRINT</button>
+                            </div>
+  
+                            <div class="download-btn">
+                              <button type="submit"><i class="fa-solid fa-cloud-arrow-down fa-1x"></i>DOWNLOAD</button>
+                            </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="link modal-close">Close</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!---------------------- END----------------------- -->
+
+                  <button type="submit"></button>
+
+                </div>
+                <div class="modal-footer">
+                  <button class="link modal-close">Close</button>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <!---------------------------- GRADING SYSTEM-------------------------------->
+
+          <!-- <div id="GradingSystem" class="tabcontent">
+            <button class="modal-open"
+            data-modal="modal8">Grading</button>
+
+            <div class="modal" id="modal8">
+              <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="model-body">
+                  <form>
+                    <label for="grade">Grade Name :</label>
+                    <input type="text" id="grade" name="GradeName" placeholder="A" required>
+                    <label for="percentage">Percentage From :</label>
+                    <input type="text" id="percentage" name="PercentageFrom" placeholder="90%" required>
+                    <label for="percentage">Percentage To :</label>
+                    <input type="text" id="percentage" name="PercentageTo" placeholder="100%" required>
+                    <label for="remark">Remarks :</label>
+                    <input type="text" id="remark" name="Remarks" placeholder="Exellent" required>
+                      
+                    <button type="submit">Submit</button>
+
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button class="link modal-close">Close</button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!---------------------------- SETTINGS -------------------------------->
+
+          <div id="Settings" class="tabcontent">
+
+            <div class="card">
+              <div class="card-header">
+                <!--------------- button------------------------>
+                <!-- <button class="modal-open"
+            data-modal="modal9">Add User</button>
+
+            <div class="modal" id="modal9">
+              <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="model-body">
+                  <form>
+                    <div class="container">
+                      <div class="row">
+                        <div class="details">
+                            <label for="idno">ID No:</label>
+                            <input type="text" id="idno" name="IDNO" placeholder="76169840" required>
+                            <label for="rollno">Teachers No:</label>
+                            <input type="text" id="rollno" name="RollNo" placeholder="IC211-0743/3030" required>
+                            <label for="fname">Full Name:</label>
+                            <input type="text" id="fname" name="firstname" placeholder="john Doe" required>
+                            <label for="phoneno">Phone No:</label>
+                            <input type="text" id="phoneno" name="PhoneNo" placeholder="0723456789" required>
+                            <label for="gender">Gender :</label>
+                            <select name="gender"  id="gender" required>
+                              <option value=" ">--Select Gender--</option>
+                              <option value="Male">Male</option>
+                              <option value="Female">Female</option>
+                            </select> -->
+                             <!-- <option value="Male" 
+                               <?php if($gender=='Male'){ echo "Selected";}?>
+                               >Male</option> -->
+                          <!-- </div>
+                      </div>
+
+                      <div class="row1">
+                          <div class="details">
+                            <label for="pass">Password:</label><br>
+                            <input type="text" id="pass" name="Password" placeholder="Password" required>
+                            <label for="pass">Confirm Password:</label><br>
+                            <input type="text" id="pass" name="Password" placeholder="Password" required>
+                            <label for="email">Email :</label>
+                            <input type="text" id="email" name="ClassName" placeholder="user@gmail.com" required>
+                            <label for="address">Address:</label>
+                            <input type="text" id="address" name="Address" placeholder="00" required>
+                            <label for="birthdate">Date of Birth :</label><br>
+                            <input type="date" id="birthdate" name="D.O.B" placeholder="25-12-2000" required>
+                          </div>
+                      </div>
+                       <button type="submit">Submit</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button class="link modal-close">Close</button>
+                </div>
+              </div>
+            </div> -->
+
+            <!-------------------- CHANGE PASSWORD---------------------->
+
+            <button class="modal-open"
+            data-modal="modal10">Change Password</button>
+
+            <div class="modal" id="modal10">
+              <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="model-body">
+                  <form>
+                    <label for="user">Old Username:</label>
+                    <input type="text" id="user" name="email" placeholder="user@gmail.com" required>
+                    <label for="user">New Username:</label>
+                    <input type="text" id="user" name="email" placeholder="user@gmail.com" required>
+                    <label for="pass">Old Password:</label>
+                    <input type="text" id="pass" name="Password" placeholder="Password" required>
+                    <label for="pass">New Password:</label>
+                    <input type="text" id="pass" name="Password" placeholder="Password" required>
+                    <label for="pass">Confirm Password:</label><br>
+                    <input type="text" id="pass" name="Password" placeholder="Password" required>
+                      
+                    <button type="submit">Submit</button>
+
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button class="link modal-close">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+                <!-------------- button-end------------------ -->
+              </div>
+              <div class="card-body">
+                <!---------------------- details------------------- -->
+                <!------------------------- INSITUTION-------------------------- -->
+
+                <div>
+                  <form action="">
+                        <div class="institute">
+                          <label for="institute">Institute Name :</label>
+                          <input type="text" id="institute" name="Institute" placeholder="Royal Primary School" required>
+                          <label for="location">Location :</label>
+                          <input type="text" id="location" name="Location" placeholder="Mombasa-Kenya" required>
+                        </div>
+    
+                        <!-- <hr> -->
+    
+                        <div class="upload">
+                          <div class="imgrow">
+                            <div class="imgcolumn">
+                              <label for="myfile">School Logo :</label>
+                              <img src="images/badge2.png" alt="Trulli" width="150" height="50">
+                              <input type="file" id="myfile" name="myfile">
+                            </div>
+                          </div>
+                          <div class="imgrow1">
+                            <div class="imgcolumn">
+                              <label for="myfile" class="sign">Principal Signature :</label>
+                              <img src="images/signature.jpg" alt="Trulli" width="150" height="50"> 
+                              <input type="file" id="myfile" name="myfile">
+                            </div>
+                          </div>
+                        </div>
+    
+                        <!-- <hr> -->
+    
+                        <button type="submit" class="btn" >Submit</button>
+                  </form>
+               </div>
+
+              </div>
+
+            </div>
+
+
+            
+
+        <!---------------------------- JAVASCRIPT -------------------------------->
+          <script>
+            function openPage(evt, pageName) {
+              var i, tabcontent, tablinks;
+              tabcontent = document.getElementsByClassName("tabcontent");
+              for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+              }
+              tablinks = document.getElementsByClassName("tablinks");
+              for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+              }
+              document.getElementById(pageName).style.display = "block";
+              evt.currentTarget.className += " active";
+            }
+            
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+          </script>
+
+          <script src="js/manage.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,613 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+nav{
+   display: flex;
+   /* padding:  2% 6%; */
+   padding: 2% 5%;
+   justify-content: space-between;
+   align-items: center ;
+}
+
+.sub-head{
+	height: 18vh;
+	width: 100%;
+	background-image: linear-gradient(rgba(4, 9, 30, 0.7),rgba(4, 9, 30, 0.7)), url(images/background.jpg);
+	background-size: cover;
+	background-position: center;
+	text-align: center;
+	color: #fff;
+}
+.sub-head h1{
+   	color: #f44336;
+	font-size: 56px;
+	margin-bottom: 50px;
+	padding-left: 20px;
+	margin-left: 10px;
+}
+
+.sub-head img{
+	float: left;
+	margin-bottom: 30px;
+	height: 80px;
+	width: 150px;
+}
+
+/* ============================LOGOUT BUTTON======================= */
+
+.logout-btn{
+	margin-bottom: 3.5vh;
+	padding: 5px;
+	background: #e9b035;
+	text-decoration: none;
+	float: right;
+	/* margin-top: 0px; */
+	/* margin-right: 5px; */
+	/* margin-left: 60px; */
+	border-radius: 4px;
+	font-size: 15px;
+	font-weight: 600;
+	color: #fff;
+	transition: 0.5s;
+	transition-property: background;
+}
+
+.logout-btn:hover{
+	background: #f44336;
+}
+
+.logout{
+	margin-top: 40px;
+	margin-right: 5px;
+	/* margin-left: 10px; */
+}
+
+.logout i{
+	padding: 3px;
+}
+
+/* ===========================MENU=========================== */
+
+.menu a {
+	display: none;
+}
+
+/* ===========================DASHBOARD=========================== */
+
+.tab{
+	float: left;
+	/* border: 1px solid #ccc; */
+	width: 20%;
+}
+
+.tab i{
+	padding: 2px;
+}
+
+.Container{
+	/* margin: 1px; */
+	margin-top: 1px;
+	margin-left: 3px;
+}
+
+.tab button{
+	display: block;
+	/* padding: 22px 16px; */
+	width: 100%;
+	margin: 1px;
+	border: none;
+	/* outline: hidden; */
+	cursor: pointer;
+	transition: 0.3s;
+	font-size: 1rem;
+	text-align: left;
+}
+
+.tab button:hover{
+	background-color: #f44336;
+}
+
+/* Create an active/current "tab button" class */
+.tabcontent{
+	float: left;
+	padding: 0px 12px;
+	/* border: 1px solid #ccc; */
+	width: 79%;
+	border-left: none;
+	height: 300px;
+	display: none;
+	border-top: none;
+}
+
+.tablinks{
+	width: 10%;
+	padding: 14px 10px;
+}
+
+.btn{
+	height: 50px;
+	padding: 0;
+	background: #04AA6D;
+	border: none;
+	outline: none;
+	overflow: hidden;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+button {
+	background-color: #04AA6D;
+	border-radius: 4px;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	margin-left: 1px;
+}
+  
+button:hover {
+	background-color: royalblue;
+	opacity: 0.8;
+}
+
+/* ========================== FORM ====================== */
+
+.row {
+	display: -ms-flexbox; /* IE10 */
+	display: flex;
+	-ms-flex-wrap: wrap; /* IE10 */
+	flex-wrap: wrap;
+	margin: 0 -16px;
+  }
+  
+  .col-25 {
+	-ms-flex: 25%; /* IE10 */
+	flex: 25%;
+  }
+  
+  .col-50 {
+	-ms-flex: 50%; /* IE10 */
+	flex: 50%;
+  }
+  
+  .col-75 {
+	-ms-flex: 75%; /* IE10 */
+	flex: 75%;
+  }
+  
+  .col-25,
+  .col-50,
+  .col-75 {
+	padding: 0 16px;
+  }
+  
+  .container {
+	/* width: 50%; */
+	/* background-color: #f2f2f2; */
+	/* padding: 5px 20px 15px 20px; */
+	/* border: 1px solid lightgrey; */
+	/* border-radius: 3px; */
+  }
+  
+  input[type=text] {
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+  }
+  
+  label {
+	margin-bottom: 10px;
+	display: block;
+  }
+  
+  .icon-container {
+	margin-bottom: 20px;
+	padding: 7px 0;
+	font-size: 24px;
+  }
+  
+  .btn {
+	background-color: #04AA6D;
+	color: white;
+	padding: 12px;
+	margin: 10px 0;
+	border: none;
+	width: 100%;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 17px;
+  }
+  
+  .btn:hover {
+	background-color: #45a049;
+  }
+  
+  a {
+	color: #2196F3;
+  }
+  
+  hr {
+	border: 1px solid lightgrey;
+  }
+  
+  span.price {
+	float: right;
+	color: grey;
+  }
+
+
+/* .details{
+	float: left;
+    width: 100%;
+    padding: 20px;
+    flex: 50%; 
+}
+
+.row{
+	display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap; 
+    flex-wrap: wrap;
+    margin: 0 -16px;
+	margin-left: 2px;
+	width: 50%;
+	float: left;
+} */
+
+/* .row1{
+	width: 50%;
+	float: right;
+} */
+
+/* ======================SELECT================== */
+/* .custom-select{
+	padding: 10px 135px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	font-size: 14px;
+	width: 100%;
+} */
+
+/* ===================== SETTING IMAGE ================= */
+
+.imgcolumn{
+	float: left;
+    width: 33.33%;
+    padding: 5px;
+ }
+ .imgrow::after{
+	content: "";
+    clear: both;
+    display: table; 
+ }
+
+ .imgrow{
+	box-sizing: border-box;
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 0 -16px;
+	margin-left: 10px;
+	width: 50%;
+	float: left;
+}
+
+.imgrow1{
+	width: 50%;
+	float: right;
+}
+
+ /* ===================INPUTS=================== */
+/* 
+input{
+	width: 100%;
+} */
+
+.brthdate{
+	width: 100%;
+	padding: 10px;
+	/* margin-bottom: 25vh; */
+}
+
+select{
+	/* width: 50%; */
+	padding: 10px 135px;
+	padding: 10px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	font-size: 14px;
+	/* text-align: left; */
+	/* padding-left: 0; */
+}
+
+.selection{
+	width: 100%;
+}
+
+option{
+	text-align: left;
+	padding-left: 10px;
+}
+
+/* ==========================MODAL======================== */
+
+.modal{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+	display: none;
+	background: rgba(0,0,0,0.5);
+	animation: modal-open .5s;
+}
+
+.modal-content{
+	background: white;
+	margin-top: 20px;
+	width: 70%;
+	height: 100%;
+	overflow: hidden;
+	overflow-y: scroll;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 4px;
+	padding: 8px 24px;
+	z-index: 4;
+}
+
+.modal-header{
+	text-decoration: underline;
+	color: royalblue;
+	text-align: center;
+	font-weight: 600;
+	padding: 2px 0;
+	font-size: 28;
+}
+
+.modal-header .modal-close{
+	float: right;
+	font-size: 20px;
+	background: white;
+	border: 0;
+	outline: 0;
+	padding: 5px 8px;
+	border-radius: 50%;
+}
+
+.modal-body{
+	color: white;
+	padding: 15px 0;
+	height: 80vh;
+}
+
+.modal-footer{
+	padding: 15px 0;
+}
+
+.modal-footer .modal-close{
+	padding: 8px 16px;
+	font-size: 14px;
+	border: none;
+	outline: none;
+	width: 60px;
+	border-radius: 4px;
+	color: white;
+}
+
+.modal-close:hover{
+	cursor: pointer;
+	background-color: #f44336;
+}
+
+.modal-open{
+	/* padding: 12px 16px; */
+	background: royalblue;
+	color: white;
+	border-radius: 4px;
+	outline: none;
+	border: none;
+	/* margin-top: 1px; */
+	float:left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-size: 15px;
+	width: 32%;
+	transition: 0.3s;
+	margin-left: 1px;
+	margin-top: 1px;
+	/* padding: 14px 16px; */
+}
+
+@keyframes modal-open{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}
+
+input[type=text], input[type=text] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+.download-btn{
+	width: 50%;
+	float: right;
+	padding: 2px;
+	font-size: 20px;
+}
+
+.download-btn i{
+	padding: 3px;
+}
+
+.print-btn{
+	width: 50%;
+	float: left;
+	padding: 2px;
+	font-size: 20px;
+}
+
+.print-btn i{
+	padding: 3px;
+}
+
+  /* ========================DASHBOARD-CARD======================== */
+
+.card-container{
+	justify-content: space-around;
+	flex-wrap: wrap;
+	display: flex;
+	flex-direction: row;
+	flex-flow: wrap;
+}
+
+.cards{
+	/* position: fixed; */
+	width: 24%;
+	margin-top: 1px;
+	margin-left: 6px;
+	border-radius: 12px;
+	transition: 0.5s;
+	display: inline-block;
+	align-self: normal;
+	/* box-shadow: 1px 1px 10px black; */
+}
+
+.cards:hover{
+	box-shadow: 0 0 3px black;
+	/* background: rgb(224, 70, 70); */
+}
+
+.icon{
+	display: inline-block;
+	padding: 6px;
+}
+
+span{
+	padding-left: 2px;
+	opacity: 0.4;
+	left: 0;
+    bottom: 0;
+}
+
+.total{
+	display: block;
+	margin-left: 120px;
+	font-size: 23px;
+}
+
+.title{
+	font-weight: 500;
+	font-size: 16px;
+	padding-bottom: 5px;
+	color: white;
+	text-align: right;
+	padding-right: 15px;
+}
+
+.card-color1{
+	background-color: #04AA6D;
+	border-radius: 12px;
+}
+
+.card-color1:hover{
+	background-color: rgb(155, 58, 23);
+}
+
+.card-color2{
+	background-color: rgb(216, 216, 33);
+	border-radius: 12px;
+}
+
+.card-color2:hover{
+	background-color: rgb(155, 58, 23);
+}
+
+.card-color3{
+	background-color: #4bd0e7;
+	border-radius: 12px;
+}
+
+.card-color3:hover{
+	background-color: rgb(155, 58, 23);
+}
+
+.card-color4{
+	background-color: #e9b035;
+	border-radius: 12px;
+}
+
+.card-color4:hover{
+	background-color: rgb(155, 58, 23);
+}
+
+/* ==================TABLINK-CARD======================= */
+
+.card{
+	text-align: left;
+
+}
+
+.card-body table{
+	margin-top: 30px;
+}
+
+.card-body form{
+	margin-top: 20px;
+}
+
+.institute{
+	margin-top: 20px;
+	float: left;
+	width: 100%;
+}
+
+/* ===================TABLES============================== */
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+  
+th, td {
+    text-align: left;
+	padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+  
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+tbody{
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+}
+
+.table-striped{
+	/* border: 1px solid grey; */
+}
+
+
+
+/* ============================================================== */
+
+

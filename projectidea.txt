@@ -1,0 +1,18 @@
+             ***********************************
+#Add a updated by and updated on in the modal classes
+#make the whole webpage a card for easy adjustment
+#create a functionless demo and send it to the user for testing.
+
+#Setting
+#email == adress == teleno  == location ==name 
+
+#Media query........
+      smartphone:
+      tablet: 
+      laptop:
+      monitor:    
+      
+#best hosting site for database and framwork(PHP)
+                  ==>renderver
+#<script src="https://kit.fontawesome.com/f41fd42c11.js" crossorigin="anonymous"></script>
+        ###################################
