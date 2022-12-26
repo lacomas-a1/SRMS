@@ -4,22 +4,13 @@
 //     });
 // });
 
-
 function myFunction() {
   const x = document.getElementById("myLinks");
-  const body = document.getElementById("Dasboard");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-      body.style.display = "none";
-    } else {
-      x.style.display = "block";
-
-    }
+  const body = document.getElementById("Dashboard");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+    x.style.position = "relative";
   }
-  // hide side menu
-const element = document.getElementsByClassName("tablinks");
-
-// const hideSideMenu = () => {
-//   const x = document.getElementById("myLinks");
-//   x.style.display="none";
-// }
+}
